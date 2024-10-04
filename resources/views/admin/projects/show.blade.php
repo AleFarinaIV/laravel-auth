@@ -7,9 +7,12 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1 class="text-center pb-3">{{ $project->name }}</h1>
-                    <a href="{{ route('admin.projects.index') }}" class="text-decoration-none btn btn-sm btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Back to Projects
-                    </a>
+                    <div>
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="text-decoration-none btn btn-sm btn-warning fw-semibold">Edit</a>
+                        <a href="{{ route('admin.projects.index') }}" class="text-decoration-none btn btn-sm btn-secondary fw-semibold">
+                            <i class="bi bi-arrow-left"></i> Back to Projects
+                        </a>
+                    </div>
                 </div>
             </div>
             

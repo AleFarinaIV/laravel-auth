@@ -38,9 +38,7 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $data = $request->validated();
-
-        Project::create($data);
+        Project::create($request->validated());
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
     }
 
@@ -62,9 +60,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -76,7 +75,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $project->update($request->validated());
+        return redirect()->route('admin.projects.show', ['project' => $project->id])->with('success', 'Project updated successfully');
     }
 
     /**
