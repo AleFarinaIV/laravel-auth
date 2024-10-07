@@ -76,7 +76,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $project->update($request->validated());
-        return redirect()->route('admin.projects.show', ['project' => $project->id])->with('success', 'Project updated successfully');
+        return redirect()->route('admin.projects.show', compact('project'))->with('success', 'Project updated successfully');
     }
 
     /**
