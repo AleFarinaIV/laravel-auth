@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-5 text-center">
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
@@ -32,9 +32,14 @@
                                 <td class="fw-bold">{{ $project->id }}</td>
                                 <td class="text-capitalize fst-italic">{{ $project->name }}</td>
                                 <td>{{ date('M d Y', strtotime($project->date_of_upload)) }}</td>
-                                <td class="d-flex align-items-center">
-                                    <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}"
-                                        class="text-decoration-none btn btn-sm btn-primary fw-semibold">View</a>
+                                <td class="d-flex align-items-center justify-content-center">
+                                    <a href="{{ route('admin.projects.show', $project->id) }}"
+                                        class="text-decoration-none btn btn-sm btn-primary fw-semibold me-3">View</a>
+                                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger button_delete"><i class="bi bi-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -43,4 +48,6 @@
             </div>
         </div>
     </div>
+
+    @include('admin.projects.partials.modal_delete')
 @endsection

@@ -7,6 +7,11 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1 class="text-center pb-3">{{ $project->name }}</h1>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <div>
                         <a href="{{ route('admin.projects.edit', $project->id) }}" class="text-decoration-none btn btn-sm btn-warning fw-semibold">Edit</a>
                         <a href="{{ route('admin.projects.index') }}" class="text-decoration-none btn btn-sm btn-secondary fw-semibold">
