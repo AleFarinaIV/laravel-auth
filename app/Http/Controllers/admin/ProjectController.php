@@ -38,7 +38,14 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        Project::create($request->validated());
+        // Valida i dati
+        $validatedData = $request->validated();
+        
+        // Genera lo slug
+        $validatedData['slug'] = Project::generateSlug($validatedData['name']);
+        
+        // Crea il progetto con lo slug
+        Project::create($validatedData);
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
     }
 
@@ -75,7 +82,13 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $project->update($request->validated());
+        $validatedData = $request->validated();
+
+        // Genera lo slug
+        $validatedData['slug'] = Project::generateSlug($validatedData['name']);
+    
+        // Aggiorna il progetto con lo slug
+        $project->update($validatedData);
         return redirect()->route('admin.projects.show', compact('project'))->with('success', 'Project updated successfully');
     }
 

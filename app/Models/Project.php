@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -15,6 +16,11 @@ class Project extends Model
         'start_date', 
         'end_date', 
         'stack',
-        'status'
+        'status',
+        'slug'
     ];
+
+    public static function generateSlug($name) {
+        return Str::slug($name, '-');
+    }
 }

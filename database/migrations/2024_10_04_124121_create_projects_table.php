@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->string('stack');
             $table->boolean('status')->default(0);
+            $table->string('slug');
             $table->timestamps();
         });
     }
