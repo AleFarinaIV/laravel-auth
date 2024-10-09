@@ -25,6 +25,7 @@ class ProjectSeeder extends Seeder
             $project->end_date = $faker->date();
             $project->stack = implode('-', $faker->randomElements(['HTML', 'CSS', 'JS', 'EJS', 'VUE', 'VITE', 'PHP', 'LARAVEL', 'NODEJS'], 4));
             $project->status = $faker->boolean();
+            $project->image_path = $faker->imageUrl(400, 300);
             $project->slug = Project::generateSlug($project->name);
 
             $project->save();

@@ -4,7 +4,7 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group py-2">
