@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -92,6 +93,14 @@ class ProjectController extends Controller
 
         // Genera lo slug
         $validatedData['slug'] = Project::generateSlug($validatedData['name']);
+
+        if($request->hasFile('image_path')) {
+            if(!Str::startsWith($project->image_path, 'https')) {
+                Storage::disk('public')->delete($project->image_path);
+            }
+            $path = Storage::disk('public')->put('image_path', $validatedData['image_path']);
+            $validatedData['image_path'] = $path;
+        }
     
         // Aggiorna il progetto con lo slug
         $project->update($validatedData);

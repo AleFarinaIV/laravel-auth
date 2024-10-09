@@ -17,6 +17,7 @@ class Project extends Model
         'end_date', 
         'stack',
         'status',
+        'image_path',
         'slug'
     ];
 

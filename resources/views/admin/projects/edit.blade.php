@@ -48,12 +48,6 @@
                         @enderror
                     </div>
                     <div class="row">
-                        <div class="col-8">
-                            <div class="form-group py-2">
-                                <label for="image_path">Image</label>
-                                <input type="file" class="form-control @error('end_date') is-invalid @enderror" name="image_path" id="image_path">
-                            </div>
-                        </div>
                         <div class="col-4">
                             <div class="form-group py-2 mb-4">
                                 <label for="status">Status</label>
@@ -67,6 +61,13 @@
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group py-2">
+                                <label for="image_path">Image</label>
+                                <input type="file" class="form-control @error('end_date') is-invalid @enderror" 
+                                    name="image_path" id="image_path">
                             </div>
                         </div>
                     </div>

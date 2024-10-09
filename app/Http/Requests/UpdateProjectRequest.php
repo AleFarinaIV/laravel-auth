@@ -30,6 +30,7 @@ class UpdateProjectRequest extends FormRequest
             'end_date' =>'required|date',
             'stack' =>'required|string',
             'status' => 'sometimes|boolean',
+            'image_path' => 'nullable|string',
         ];
     }
 }
