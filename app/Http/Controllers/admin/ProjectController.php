@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -43,6 +44,11 @@ class ProjectController extends Controller
         
         // Genera lo slug
         $validatedData['slug'] = Project::generateSlug($validatedData['name']);
+
+        if($request->hasFile('image_path')) {
+            $path = Storage::disk('public')->put('image_path', $validatedData['image_path']);
+            $validatedData['image_path'] = $path;
+        }
         
         // Crea il progetto con lo slug
         Project::create($validatedData);

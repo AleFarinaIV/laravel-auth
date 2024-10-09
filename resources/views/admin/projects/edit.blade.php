@@ -47,18 +47,28 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group py-2 mb-4">
-                        <label for="status">Status</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="status" name="status" value="1"
-                                {{ old('status', $project->status) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="status">
-                                Compleated
-                            </label>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group py-2">
+                                <label for="image_path">Image</label>
+                                <input type="file" class="form-control @error('end_date') is-invalid @enderror" name="image_path" id="image_path">
+                            </div>
                         </div>
-                        @error('status')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <div class="col-4">
+                            <div class="form-group py-2 mb-4">
+                                <label for="status">Status</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="status" name="status" value="1"
+                                        {{ old('status') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status">
+                                        Compleated
+                                    </label>
+                                </div>
+                                @error('status')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Project</button>
                 </form>
