@@ -29,7 +29,7 @@
                                 @if (Str::startsWith($project->image_path, 'https'))
                                     <img src="{{ $project->image_path }}" class="img-fluid border border-2 rounded-2" alt="Project {{ $project->name }}">
                                 @else
-                                    <img src="{{ asset('storage/'. $project->image) }}" class="img-fluid border border-2 rounded-2" alt="Project {{ $project->name }}">
+                                    <img src="{{ asset('storage/'. $project->image_path) }}" class="img-fluid border border-2 rounded-2" alt="Project {{ $project->name }}">
                                 @endif
                             </div>
                         </div>
